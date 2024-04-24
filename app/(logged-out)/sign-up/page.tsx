@@ -1,4 +1,5 @@
 "use client";
+import { PasswordInput } from "@/components/password-input";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -45,9 +46,12 @@ const formSchema = z
     accountType: z.enum(["personal", "company"]),
     companyName: z.string().optional(),
     numberOfEmployees: z.coerce.number().optional(),
-    password: z.string().min(1, {
-      message: "Password Required.",
+    password: z.string().min(8, {
+      message: "Password Must Contain At least 8 Character",
     }),
+
+    confirmPassword: z.string(),
+
     dob: z.date().refine((date) => {
       const today = new Date();
       const eighteedYearsAgo = new Date(
@@ -59,6 +63,15 @@ const formSchema = z
     }),
   })
   .superRefine((data, ctx) => {
+
+    if(data.password !== data.confirmPassword){
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["confirmPassword"],
+        message: "password do not match",
+      });
+    }
+
     if (data.accountType === "company" && !data.companyName) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -117,20 +130,6 @@ const SignupPage = () => {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter Your Email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Enter Your Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -236,6 +235,7 @@ const SignupPage = () => {
                                 //   date < new Date("1900-01-01")
                                 // }
                                 initialFocus
+                                captionLayout="dropdown-buttons"
                               />
                             </PopoverContent>
                           </Popover>
@@ -247,6 +247,34 @@ const SignupPage = () => {
                       )}
                     />
 
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <PasswordInput placeholder="Enter Your Password" {...field} /> 
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+<FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                    <PasswordInput placeholder="Confirm Password" {...field} /> 
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}

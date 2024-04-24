@@ -1,4 +1,5 @@
 "use client";
+import { PasswordInput } from "@/components/password-input";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -81,7 +82,7 @@ const LoginPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter Your Email" {...field} />
+                    <PasswordInput placeholder="Enter Your Password" {...field} /> 
                     </FormControl>
                     <FormDescription>
                       this is the password of your account
