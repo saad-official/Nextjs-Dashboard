@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -51,7 +52,9 @@ const formSchema = z
     }),
 
     confirmPassword: z.string(),
-
+    acceptTerms:z.boolean({
+      required_error:"you must accept terms and condition"
+    }).refine((checked) => checked, "you must accept terms and condition"),
     dob: z.date().refine((date) => {
       const today = new Date();
       const eighteedYearsAgo = new Date(
@@ -280,7 +283,26 @@ const SignupPage = () => {
                 )}
               />
 
-              <Button type="submit">Sign up</Button>
+<FormField
+                control={form.control}
+                name="acceptTerms"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex gap-3 items-center">
+                    <FormControl>
+                    <Checkbox checked={field.value} onCheckChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel>Accept Terms And Condition</FormLabel>
+                    </div>
+                    <FormDescription>
+                      By Signing up you are agree to our terms and condition
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button className="w-full" type="submit">Sign up</Button>
             </form>
           </Form>
         </CardContent>

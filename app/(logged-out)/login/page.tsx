@@ -82,7 +82,10 @@ const LoginPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                    <PasswordInput placeholder="Enter Your Password" {...field} /> 
+                      <PasswordInput
+                        placeholder="Enter Your Password"
+                        {...field}
+                      />
                     </FormControl>
                     <FormDescription>
                       this is the password of your account
@@ -91,7 +94,9 @@ const LoginPage = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit">Submit</Button>
+              <Button className="w-full" type="submit">
+                Submit
+              </Button>
             </form>
           </Form>
         </CardContent>
