@@ -1,6 +1,6 @@
 "use client";
 
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const TeamDistributionChart = () => {
   const data = [
@@ -23,7 +23,11 @@ const TeamDistributionChart = () => {
   return (
     <ResponsiveContainer width={"100%"} height={150}>
       <PieChart>
-        <Pie data={data} dataKey="value">
+        <Tooltip
+          labelClassName="font-bold"
+          wrapperClassName="dark:[&_.recharts-tooltip-item]:!text-white [&_.recharts-tooltip-item]:!text-black !text-sm dark:!bg-black rounded-md dark:!border-border"
+        />
+        <Pie data={data} dataKey="value" nameKey="name">
           {data.map((dataItem) => (
             <Cell key={dataItem.color} fill={dataItem.color} />
           ))}

@@ -29,6 +29,7 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 import TeamDistributionChart from "./team-distribution-chart";
+import SupportTicketResolve from "./support-ticket-resolve";
 
 const teamLeaders = [
   {
@@ -154,7 +155,7 @@ const TeamStats = () => {
               <PieChartIcon />
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex gap-2 items-center">
+          <CardContent className="flex gap-2 pb-0 items-center">
             <TeamDistributionChart />
           </CardContent>
         </Card>
@@ -167,7 +168,9 @@ const TeamStats = () => {
             <span>Support ticker resolved</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="w-full pl-0"></CardContent>
+        <CardContent className="w-full pl-0">
+          <SupportTicketResolve />
+        </CardContent>
       </Card>
     </>
   );
