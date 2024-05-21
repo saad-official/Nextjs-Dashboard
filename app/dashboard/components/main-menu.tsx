@@ -8,8 +8,10 @@ import { cn } from "@/lib/utils";
 
 const MainMenu = ({ className }: { className?: string }) => {
   return (
-    <div className={cn("bg-muted overflow-auto p-4 flex flex-col", className)}>
-      <div className="border-b dark:border-b-black border-b-zinc-300 pb-4">
+    <div
+      className={cn("md:bg-muted overflow-auto p-4 flex flex-col", className)}
+    >
+      <div className="hidden md:block border-b dark:border-b-black border-b-zinc-300 pb-4">
         <MenuTitle />
       </div>
       <div className="py-4 flex-grow">
