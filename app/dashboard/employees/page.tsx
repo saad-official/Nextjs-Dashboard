@@ -1,5 +1,8 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DataTable } from "@/components/ui/data-table";
 import React from "react";
 import { setTimeout } from "timers/promises";
+import { columns } from "./columns";
 
 const EmployeesPage = async () => {
   await setTimeout(5000);
@@ -56,7 +59,16 @@ const EmployeesPage = async () => {
       avatar: "/images/cm.jpg",
     },
   ];
-  return <div>EmployeesPage</div>;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Employees</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <DataTable data={employees} columns={columns} />
+      </CardContent>
+    </Card>
+  );
 };
 
 export default EmployeesPage;
