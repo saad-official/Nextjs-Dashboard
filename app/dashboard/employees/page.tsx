@@ -22,7 +22,7 @@ const EmployeesPage = async () => {
       lastName: "murray",
       teamName: "alpha",
       isTeamLeader: true,
-      avatar: "/images/cm.jpg",
+      avatar: "/cmp.jpg",
     },
     {
       id: 1,
@@ -30,7 +30,7 @@ const EmployeesPage = async () => {
       lastName: "murray",
       teamName: "alpha",
       isTeamLeader: true,
-      avatar: "/images/cm.jpg",
+      avatar: "/cmp.jpg",
     },
     {
       id: 1,
@@ -38,16 +38,7 @@ const EmployeesPage = async () => {
       lastName: "murray",
       teamName: "alpha",
       isTeamLeader: true,
-      avatar: "/images/cm.jpg",
-    },
-
-    {
-      id: 1,
-      firstName: "collin",
-      lastName: "murray",
-      teamName: "alpha",
-      isTeamLeader: true,
-      avatar: "/images/cm.jpg",
+      avatar: "/sheely.jpeg",
     },
 
     {
@@ -56,7 +47,16 @@ const EmployeesPage = async () => {
       lastName: "murray",
       teamName: "alpha",
       isTeamLeader: true,
-      avatar: "/images/cm.jpg",
+      avatar: "/david.jpeg",
+    },
+
+    {
+      id: 1,
+      firstName: "collin",
+      lastName: "murray",
+      teamName: "alpha",
+      isTeamLeader: true,
+      avatar: "",
     },
   ];
   return (
