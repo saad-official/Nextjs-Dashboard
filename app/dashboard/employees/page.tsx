@@ -14,7 +14,7 @@ const EmployeesPage = async () => {
       lastName: "murray",
       teamName: "alpha",
       isTeamLeader: true,
-      avatar: "/images/cm.jpg",
+      avatar: "",
     },
     {
       id: 1,
